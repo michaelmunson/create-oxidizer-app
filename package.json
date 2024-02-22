@@ -9,6 +9,10 @@
   "bin": {
     "create-oxidizer-app": "./index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/michaelmunson/create-oxidizer-app"
+  },
   "keywords": [
     "create",
     "oxidizer",
