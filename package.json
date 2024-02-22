@@ -1,6 +1,6 @@
 {
   "name": "create-oxidizer-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A script to create a template oxidizer app",
   "main": "index.js",
   "scripts": {
