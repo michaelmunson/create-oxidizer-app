@@ -1,0 +1,19 @@
+{
+  "name": "create-oxidizer-app",
+  "version": "1.0.0",
+  "description": "A script to create a template oxidizer app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "create-oxidizer-app": "./index.js"
+  },
+  "keywords": [
+    "create",
+    "oxidizer",
+    "app"
+  ],
+  "author": "Michael Munson",
+  "license": "ISC"
+}
