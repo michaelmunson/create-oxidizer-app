@@ -71,5 +71,5 @@ function createDir(dirName){
     enforceArgs(dirName, rest);
     console.log('Creating Oxidizer App...');
     createDir(dirName);
-
+    console.log('Oxidizer App Created @', dirName);
 })();
