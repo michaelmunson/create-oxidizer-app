@@ -34,19 +34,42 @@ function createSrc(){
       </body>
       <script src="index.ts" type="module"></script>
 </html>`);
-    fs.writeFileSync('src/app.ts', 
-`import {DIV} from "oxidizer";
+    fs.writeFileSync('src/App.ts', 
+`import {createEffect, createProps, DIV, P, BUTTON} from "oxidizer";
 
-export const App = () => {
+
+const Counter = () => {
+    const props = createProps({count: 0}, [
+        // keep count greater than or equal to 0
+        createEffect(['count'], $ => {
+            if ($.count < 0){
+                $.count = 0;
+            }
+        })
+    ]);
+
     return (
-        DIV({id:'app'}, [
-            'Hello World!'
+        DIV(props, $ => [
+            {id: 'counter-app'},
+            P('Count: ' + $.count),
+            DIV({style: {display: 'flex'}}, 
+                BUTTON({onclick: () => $.count -= 1}, "Decrement"),
+                BUTTON({onclick: () => $.count += 1}, "Increment")
+            )
         ])
+    )
+}
+
+export default function App(){
+    return (
+        DIV({id: 'app'},
+            Counter()
+        )
     )
 }
 `);
     fs.writeFileSync('src/index.ts', 
-`import {App} from "./app";
+`import App from "./App";
 
 const app = App();
 
@@ -58,6 +81,7 @@ document.body.append(app);
 function createDir(dirName){
     fs.mkdirSync(dirName);
     process.chdir(dirName);
+    console.log('\nInstalling Dependencies..\n')
     spawnSync('npm',['init','-y']);
     spawnSync('npm',['install', '--save-dev', 'parcel']);
     spawnSync('npm',['install', 'oxidizer']);
@@ -67,9 +91,11 @@ function createDir(dirName){
 }
 
 (() => {
+    console.log('='.repeat(20))
     const [dirName, ...rest] = process.argv.slice(2);
     enforceArgs(dirName, rest);
     console.log('Creating Oxidizer App...');
     createDir(dirName);
     console.log('Oxidizer App Created @', dirName);
+    console.log('run `npm start` to start your app')
 })();
