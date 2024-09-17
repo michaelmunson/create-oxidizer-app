@@ -38,7 +38,8 @@ function createSrc(){
       <script src="index.ts" type="module"></script>
 </html>`);
     fs.writeFileSync('src/App.ts', 
-`import {createEffect, createProps, DIV, P, BUTTON} from "oxidizer";
+`import {createEffect, createProps} from "oxidizer/props";
+import { DIV, P, BUTTON} from "oxidizer/intrinsics";
 
 
 const Counter = () => {
