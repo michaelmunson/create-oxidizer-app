@@ -18,6 +18,9 @@ function updatePackageJson(){
         "start": "parcel",
         "build": "parcel build"
     }
+    jsonObj['@parcel/resolver-default'] = {
+        "packageExports": true
+    }
     fs.writeFileSync('package.json', JSON.stringify(jsonObj)); 
 }
 
